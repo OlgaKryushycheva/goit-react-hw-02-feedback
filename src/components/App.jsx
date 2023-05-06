@@ -12,47 +12,23 @@ export class App extends Component {
   };
 
   handleClick = evt => {
-    this.setState(prevState => ({
-      [evt.target.name]: prevState.good + 1,
-    }));
+    const option = evt.target.name;
 
-    // this.setState(
-    //   prevState =>
-    //     (evt.target.name === 'good' && {
-    //       good: prevState.good + 1,
-    //     }) ||
-    //     (evt.target.name === 'neutral' && {
-    //       neutral: prevState.neutral + 1,
-    //     }) ||
-    //     (evt.target.name === 'bad' && {
-    //       bad: prevState.bad + 1,
-    //     })
-    // );
+    this.setState(
+      prevState => ({
+        [option]: prevState[option] + 1,
+      })
 
-    // Хотіла зробити через switch і не вдалося((
-    // чи краще взігалі 3 окремі функції?
-    // {
-    //   switch (evt.target.name) {
-    //     case 'good':
-    //       {
-    //         good: prevState.good + 1,
-    //       };
-    //       break;
-    //     case 'neutral':
-    //       {
-    //         neutral: prevState.neutral + 1,
-    //       };
-    //       break;
-    //     case 'bad':
-    //       {
-    //         bad: prevState.bad + 1,
-    //       };
-    //       break;
-    //     default:
-    //       console.log(1);
-    //       break;
-    //   }
-    // }
+      // (name === 'good' && {
+      //   good: prevState.good + 1,
+      // }) ||
+      // (name === 'neutral' && {
+      //   neutral: prevState.neutral + 1,
+      // }) ||
+      // (name === 'bad' && {
+      //   bad: prevState.bad + 1,
+      // })
+    );
   };
 
   countTotalFeedback = (good, neutral, bad) => {
@@ -73,7 +49,10 @@ export class App extends Component {
 
     return (
       <Section title={'Please leave feedback'}>
-        <FeedbackOptions onLeaveFeedback={this.handleClick} />
+        <FeedbackOptions
+          options={Object.keys(this.state)}
+          onLeaveFeedback={this.handleClick}
+        />
         <Statistics
           good={good}
           neutral={neutral}
