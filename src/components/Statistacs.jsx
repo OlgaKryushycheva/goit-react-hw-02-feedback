@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Item, List, Paragraf, TitleSecond } from 'styles/Feedback.styled';
 
 export const Statistics = ({
   good,
@@ -8,15 +9,17 @@ export const Statistics = ({
   positivePercentage,
 }) => (
   <>
-    <h2>Statistics</h2>
+    <TitleSecond>Statistics</TitleSecond>
     {total > 0 && (
-      <ul>
-        <li>Good: {good}</li>
-        <li>Neutral: {neutral}</li>
-        <li>Bad: {bad}</li>
-        <li>Total: {total}</li>
-        <li>Positive feedback: {positivePercentage}%</li>
-      </ul>
+      <>
+        <List>
+          <Item>Good: {good}</Item>
+          <Item>Neutral: {neutral}</Item>
+          <Item>Bad: {bad}</Item>
+        </List>
+        <Paragraf>Total: {total}</Paragraf>
+        <Paragraf>Positive feedback: {positivePercentage}% </Paragraf>
+      </>
     )}
   </>
 );

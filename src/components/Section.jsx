@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import { Container, TitleMain } from 'styles/Feedback.styled';
 
 export const Section = ({ title, children }) => {
   return (
-    <section>
-      <h1>{title}</h1>
+    <Container>
+      <TitleMain>{title}</TitleMain>
       {children}
-    </section>
+    </Container>
   );
 };
 
