@@ -10,17 +10,13 @@ export const Statistics = ({
 }) => (
   <>
     <TitleSecond>Statistics</TitleSecond>
-    {total > 0 && (
-      <>
-        <List>
-          <Item>Good: {good}</Item>
-          <Item>Neutral: {neutral}</Item>
-          <Item>Bad: {bad}</Item>
-        </List>
-        <Paragraf>Total: {total}</Paragraf>
-        <Paragraf>Positive feedback: {positivePercentage}% </Paragraf>
-      </>
-    )}
+    <List>
+      <Item>Good: {good}</Item>
+      <Item>Neutral: {neutral}</Item>
+      <Item>Bad: {bad}</Item>
+    </List>
+    <Paragraf>Total: {total}</Paragraf>
+    <Paragraf>Positive feedback: {positivePercentage}% </Paragraf>
   </>
 );
 

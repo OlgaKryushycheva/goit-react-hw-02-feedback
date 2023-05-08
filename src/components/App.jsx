@@ -1,5 +1,4 @@
 import { Component } from 'react';
-
 import { Section } from './Section';
 import { FeedbackOptions } from './FedbackOptions';
 import { Notification } from './Notification';
@@ -15,21 +14,9 @@ export class App extends Component {
   handleClick = evt => {
     const option = evt.target.name;
 
-    this.setState(
-      prevState => ({
-        [option]: prevState[option] + 1,
-      })
-
-      // (name === 'good' && {
-      //   good: prevState.good + 1,
-      // }) ||
-      // (name === 'neutral' && {
-      //   neutral: prevState.neutral + 1,
-      // }) ||
-      // (name === 'bad' && {
-      //   bad: prevState.bad + 1,
-      // })
-    );
+    this.setState(prevState => ({
+      [option]: prevState[option] + 1,
+    }));
   };
 
   countTotalFeedback = (good, neutral, bad) => {
@@ -54,14 +41,18 @@ export class App extends Component {
           options={Object.keys(this.state)}
           onLeaveFeedback={this.handleClick}
         />
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={total}
-          positivePercentage={positivePercentage}
-        />
-        <Notification total={total} massage={'There is no feedback'} />
+        {total > 0 && (
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            positivePercentage={positivePercentage}
+          />
+        )}
+        {total === 0 && (
+          <Notification total={total} massage={'There is no feedback'} />
+        )}
       </Section>
     );
   }
